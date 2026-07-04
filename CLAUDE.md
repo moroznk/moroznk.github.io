@@ -19,7 +19,7 @@ Static website for ИП "Мороз Н.К." (a Russian sole proprietorship selli
 ./build.sh
 ```
 
-Both scripts use Docker Compose. The `run.sh` script forces a full rebuild with `--force-recreate`. The `builder` service mounts `./site` as a volume for incremental builds; the `site` service copies files into the image.
+Both scripts use `docker-compose` (v1 standalone). The `run.sh` script forces a full rebuild with `--force-recreate`. The `builder` service mounts `./site` as a volume for incremental builds; the `site` service copies files into the image.
 
 ## Architecture
 

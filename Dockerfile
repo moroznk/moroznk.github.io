@@ -5,4 +5,5 @@ COPY site/Gemfile .
 RUN chmod -R 777 /srv/jekyll/site; \
     bundle install
 COPY site /srv/jekyll/site
-CMD jekyll serve --livereload
+RUN chmod -R 777 /srv/jekyll/site
+CMD jekyll serve
