@@ -19,7 +19,7 @@ Static website for ИП "Мороз Н.К." (a Russian sole proprietorship selli
 ./build.sh
 ```
 
-Both scripts use `docker-compose` (v1 standalone). Both services mount `./site` as a volume so Jekyll writes output to the local filesystem. `Gemfile.lock` is written locally on first run and git-ignored.
+Both scripts auto-detect `docker-compose` (v1) or `docker compose` (v2 plugin) — whichever is available. Both services mount `./site` as a volume so Jekyll writes output to the local filesystem. `Gemfile.lock` is written locally on first run and git-ignored.
 
 ## Architecture
 

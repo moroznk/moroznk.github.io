@@ -1,3 +1,4 @@
+command -v docker-compose > /dev/null 2>&1 && DC="docker-compose" || DC="docker compose"
 echo "Running on http://localhost:4000 (develop mode)"
-docker-compose rm -f
-docker-compose up site --build --force-recreate
+$DC rm -f
+$DC up site --build --force-recreate
