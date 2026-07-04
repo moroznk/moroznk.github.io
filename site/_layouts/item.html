@@ -1,6 +1,19 @@
 ---
 layout: default
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.title | jsonify }},
+  "brand": {
+    "@type": "Brand",
+    "name": "ИП «Мороз Н.К.»"
+  }{% if page.photo %},
+  "image": "{{ site.url }}{{ page.photo }}"{% endif %}
+}
+</script>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">

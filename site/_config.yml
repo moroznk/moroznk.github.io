@@ -18,10 +18,13 @@ email: nm007@mail.ru
 phone: +7 (911) 502-74-96
 phone_plain: "89115027496"
 post: 160001, г. Вологда, ул. Октябрьская, дом 13-а, офис 11
-# description: >- # this means to ignore newlines until "baseurl:"
-#   Оффициальный сайт ИП "Мороз Н.К."
-baseurl: "" # moroznk # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+description: >-
+  Официальный сайт ИП "Мороз Н.К." — производство и продажа устройств
+  электроосмотической сушки и защиты от увлажнения изоляции электродвигателей,
+  генераторов и трансформаторов. Вологда.
+lang: ru
+baseurl: ""
+url: "https://moroznk.github.io"
 twitter_username: 
 github_username: 
 
@@ -30,6 +33,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 permalink: /:categories/:title
 
