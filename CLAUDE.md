@@ -33,7 +33,7 @@ All Jekyll source lives in `site/`. The build output goes to `site/_site/` (git-
 
 **Site config** (`site/_config.yml`): contact info (email, phone, postal address) is stored as site variables accessed in templates via `{{ site.email }}`, `{{ site.phone }}`, etc. The `items` collection has `output: true` so each item gets its own page at `/items/<slug>`.
 
-**Deployment:** GitHub Actions (`.github/workflows/release.yml`) runs `sudo ./build.sh` (uses `docker-compose` + the `builder` service), then deploys `site/_site/` to the `gh-pages` branch via `peaceiris/actions-gh-pages`. Deployment only happens on push to `master`; PRs only build. The `--exit-code-from builder` flag ensures the CI step fails if Jekyll fails.
+**Deployment:** GitHub Actions (`.github/workflows/release.yml`) splits into two jobs: `build` runs `sudo ./build.sh` and uploads `site/_site/` as a Pages artifact; `deploy` publishes it via `actions/deploy-pages`. Both jobs only run on push to `master`; PRs only build. Repo Pages source must be set to **GitHub Actions** (not branch) in Settings → Pages.
 
 ## SEO
 
