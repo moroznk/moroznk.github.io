@@ -11,4 +11,5 @@ services:
 
   builder:
     <<: *base-service
+    ports: []
     command: jekyll build && ls _site

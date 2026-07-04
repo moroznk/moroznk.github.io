@@ -8,18 +8,18 @@ Static website for ИП "Мороз Н.К." (a Russian sole proprietorship selli
 
 ## Commands
 
-**Local development (with live reload):**
+**Local development** (auto-regenerates on file changes; refresh browser manually):
 ```bash
 ./run.sh
 # Site available at http://localhost:4000
 ```
 
-**Build only (outputs to `site/_site/`):**
+**Build only** (outputs to `site/_site/`):
 ```bash
 ./build.sh
 ```
 
-Both scripts use `docker-compose` (v1 standalone). The `run.sh` script forces a full rebuild with `--force-recreate`. The `builder` service mounts `./site` as a volume for incremental builds; the `site` service copies files into the image.
+Both scripts use `docker-compose` (v1 standalone). Both services mount `./site` as a volume so Jekyll writes output to the local filesystem. `Gemfile.lock` is written locally on first run and git-ignored.
 
 ## Architecture
 
@@ -33,7 +33,7 @@ All Jekyll source lives in `site/`. The build output goes to `site/_site/` (git-
 
 **Site config** (`site/_config.yml`): contact info (email, phone, postal address) is stored as site variables accessed in templates via `{{ site.email }}`, `{{ site.phone }}`, etc. The `items` collection has `output: true` so each item gets its own page at `/items/<slug>`.
 
-**Deployment:** GitHub Actions (`.github/workflows/release.yml`) builds the site on every push/PR and deploys to the `gh-pages` branch on pushes to `master`.
+**Deployment:** GitHub Actions (`.github/workflows/release.yml`) runs `sudo ./build.sh` (uses `docker-compose` + the `builder` service), then deploys `site/_site/` to the `gh-pages` branch via `peaceiris/actions-gh-pages`. Deployment only happens on push to `master`; PRs only build. The `--exit-code-from builder` flag ensures the CI step fails if Jekyll fails.
 
 ## SEO
 
