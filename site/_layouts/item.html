@@ -11,7 +11,17 @@ layout: default
     "@type": "Brand",
     "name": "ИП «Мороз Н.К.»"
   }{% if page.photo %},
-  "image": "{{ site.url }}{{ page.photo }}"{% endif %}
+  "image": "{{ site.url }}{{ page.photo }}"{% endif %},
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "RUB",
+    "seller": {
+      "@type": "Organization",
+      "name": "ИП «Мороз Н.К.»",
+      "url": {{ site.url | jsonify }}
+    }
+  }
 }
 </script>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
@@ -21,7 +31,7 @@ layout: default
   </header>
 
   {% if page.photo %}
-  <img src="{{ page.photo | relative_url }}" alt="{{ page.short_title }}">
+  <img src="{{ page.photo | relative_url }}" alt="{{ page.short_title }}" loading="eager">
   {% endif %}
 
   <div class="post-content e-content" itemprop="articleBody">

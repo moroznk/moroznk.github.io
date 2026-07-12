@@ -3,12 +3,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
-  {%- if page.description -%}
-  <meta name="description" content="{{ page.description | escape }}">
-  {%- elsif site.description -%}
-  <meta name="description" content="{{ site.description | escape }}">
-  {%- endif -%}
   <link rel="icon" type="image/x-icon" href="//assets-cdn.github.com/favicon.ico" title="GitHub" />
+  {%- if page.url == "/" -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": {{ site.title | jsonify }},
+    "description": {{ site.description | jsonify }},
+    "url": {{ site.url | jsonify }},
+    "telephone": {{ site.phone | jsonify }},
+    "email": {{ site.email | jsonify }},
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Октябрьская, дом 13-а, офис 11",
+      "addressLocality": "Вологда",
+      "postalCode": "160001",
+      "addressCountry": "RU"
+    },
+    "areaServed": { "@type": "Country", "name": "Россия" }
+  }
+  </script>
+  {%- endif -%}
   <link rel="stylesheet" href="{{ '/assets/style.css' }}">
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}

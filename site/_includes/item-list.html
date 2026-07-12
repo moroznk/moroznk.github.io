@@ -5,7 +5,7 @@
         {%- for item in sorted_items -%}
         <tr class="noborder">
             <td class="noborder tableimage">
-                <img src="{{ item.photo | relative_url}}" alt="{{ item.short_title }}">
+                <img src="{{ item.photo | relative_url}}" alt="{{ item.short_title }}" loading="lazy" width="220" height="165">
             <td class="noborder">
                 <h4>
                     <a class="item-link" href="{{ item.url | relative_url }}">
